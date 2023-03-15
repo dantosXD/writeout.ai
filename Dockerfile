@@ -1,5 +1,5 @@
 # Use the official PHP image with Apache
-FROM php:8.0-apache
+FROM php:8.1-apache
 
 # Install Git, unzip and dependencies for Laravel
 RUN apt-get update && \
@@ -14,9 +14,6 @@ RUN git clone https://github.com/beyondcode/writeout.ai.git /var/www/html
 
 # Run Composer install
 RUN composer install --working-dir=/var/www/html
-
-# Copy .env.example to .env
-RUN cp /var/www/html/.env.example /var/www/html/.env
 
 # Run Laravel commands
 RUN php /var/www/html/artisan key:generate && \
